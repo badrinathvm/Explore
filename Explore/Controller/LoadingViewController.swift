@@ -1,5 +1,5 @@
 //
-//  BooksViewController.swift
+//  LoadingViewController.swift
 //  Explore
 //
 //  Created by Badarinath Venkatnarayansetty on 10/23/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BooksViewController: UIViewController {
+class LoadingViewController: UIViewController {
     
     private lazy var activityIndicator:UIActivityIndicatorView = { [unowned self] in
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
@@ -22,11 +22,11 @@ class BooksViewController: UIViewController {
         
         view.addSubview(activityIndicator)
         
-    
+        
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+            ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +35,7 @@ class BooksViewController: UIViewController {
         // We use a 0.5 second delay to not show an activity indicator
         // in case our data loads very quickly.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-             self?.activityIndicator.startAnimating()
+            self?.activityIndicator.startAnimating()
         }
     }
 }

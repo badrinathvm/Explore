@@ -13,8 +13,8 @@ class ViewController: UIViewController, UITableViewDelegate {
     private var dataSource:TableViewDataSource<Book>?
     private var viewModel: BookViewModel?
     
-    lazy var bookViewController:BooksViewController = {
-        let viewController = BooksViewController()
+    lazy var listviewController:BookListViewController = {
+        let viewController = BookListViewController()
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         return viewController
     }()
@@ -43,33 +43,13 @@ class ViewController: UIViewController, UITableViewDelegate {
     }()
 
     fileprivate func setupContainerView() {
-//        self.view.addSubview(containerView)
-//
-        
-        //add new view controller
-        
-//        addChild(bookViewController)
-//        self.view.addSubview(bookViewController.view)
-//        bookViewController.didMove(toParent: self)
-        
-        add(bookViewController)
-        
-        
-                NSLayoutConstraint.activate([
-                    bookViewController.view.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 5),
-                    bookViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                    bookViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                    bookViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-                ])
-        
-//        NSLayoutConstraint.activate([
-//            containerView.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 5),
-//            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-        
-        
+        add(listviewController)
+        NSLayoutConstraint.activate([
+            listviewController.view.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 5),
+            listviewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            listviewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            listviewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     var books: [Book] = []
@@ -113,7 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate {
 extension ViewController: ContainerViewDelegate {
     func didRemoveContainerView(index: Int) {
         if index%2 == 0 {
-            bookViewController.remove()
+            listviewController.remove()
         }else {
             setupContainerView()
         }
