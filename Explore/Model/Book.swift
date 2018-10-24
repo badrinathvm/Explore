@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Product {
+struct Book {
   var name:String
 }

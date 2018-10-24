@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
 
-    private var dataSource:TableViewDataSource<Product>?
+    private var dataSource:TableViewDataSource<Book>?
+    private var viewModel: BookViewModel?
     
-    fileprivate let cellId = "productCell"
+    lazy var bookViewController:BooksViewController = {
+        let viewController = BooksViewController()
+        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        return viewController
+    }()
+    
+    fileprivate let cellId = "bookCell"
     
     lazy var tableView: UITableView = { [unowned self] in
         var tableView = UITableView()
@@ -36,17 +43,36 @@ class ViewController: UIViewController, UITableViewDelegate {
     }()
 
     fileprivate func setupContainerView() {
-        self.view.addSubview(containerView)
+//        self.view.addSubview(containerView)
+//
         
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 5),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        //add new view controller
+        
+//        addChild(bookViewController)
+//        self.view.addSubview(bookViewController.view)
+//        bookViewController.didMove(toParent: self)
+        
+        add(bookViewController)
+        
+        
+                NSLayoutConstraint.activate([
+                    bookViewController.view.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 5),
+                    bookViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                    bookViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                    bookViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                ])
+        
+//        NSLayoutConstraint.activate([
+//            containerView.topAnchor.constraint(equalTo: segmentView.bottomAnchor, constant: 5),
+//            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
+        
+        
     }
     
-    var products: [Product] = []
+    var books: [Book] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +80,7 @@ class ViewController: UIViewController, UITableViewDelegate {
         self.view.backgroundColor = UIColor.white
         
         self.view.addSubview(segmentView)
-        
+    
         NSLayoutConstraint.activate([
              segmentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
              segmentView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -72,12 +98,12 @@ class ViewController: UIViewController, UITableViewDelegate {
            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        products.append( Product(name: "Button1"))
-        products.append( Product(name: "Button3"))
+        books.append( Book(name: "Button1"))
+        books.append( Book(name: "Button3"))
         
         tableView.tableFooterView = UIView()
         
-        self.dataSource = .make(for: products)
+        self.dataSource = .make(for: books)
 
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()
@@ -87,7 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate {
 extension ViewController: ContainerViewDelegate {
     func didRemoveContainerView(index: Int) {
         if index%2 == 0 {
-            containerView.removeFromSuperview()
+            bookViewController.remove()
         }else {
             setupContainerView()
         }
@@ -95,17 +121,34 @@ extension ViewController: ContainerViewDelegate {
 }
 
 //Creating a new reusable tableview data source
-extension TableViewDataSource where Model == Product {
+extension TableViewDataSource where Model == Book {
 
-    static func make(for products:  [Product] , reuseIdentifier: String = "productCell" ) -> TableViewDataSource{
+    static func make(for products:  [Book] , reuseIdentifier: String = "bookCell" ) -> TableViewDataSource{
 
-        let dataSource = TableViewDataSource(models: products, reuseIdentifier: reuseIdentifier ) { (product, cell) in
-            cell.textLabel?.text = product.name
+        let dataSource = TableViewDataSource(models: products, reuseIdentifier: reuseIdentifier ) { (book, cell) in
+            cell.textLabel?.text = book.name
         }
 
         return dataSource
     }
 }
 
-
+extension UIViewController {
+    
+    func add(_ child: UIViewController) {
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+    
+    func remove() {
+        guard parent != nil else {
+            return
+        }
+        
+        willMove(toParent: nil)
+        removeFromParent()
+        view.removeFromSuperview()
+    }
+}
 

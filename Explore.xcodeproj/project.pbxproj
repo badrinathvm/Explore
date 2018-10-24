@@ -17,8 +17,10 @@
 		B8A8E19521754CC90010EFA0 /* SegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A8E19421754CC90010EFA0 /* SegmentView.swift */; };
 		B8A8E198217555280010EFA0 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A8E197217555280010EFA0 /* TextCell.swift */; };
 		B8A8E19B21766CF90010EFA0 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A8E19A21766CF90010EFA0 /* ContainerView.swift */; };
-		B8B62262217BA84900354B5D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B62261217BA84900354B5D /* Product.swift */; };
+		B8B62262217BA84900354B5D /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B62261217BA84900354B5D /* Book.swift */; };
 		B8B62264217BBB8500354B5D /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B62263217BBB8500354B5D /* TableViewDataSource.swift */; };
+		B8B62267217BC92100354B5D /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B62266217BC92100354B5D /* BookViewModel.swift */; };
+		B8D17D6B2180359300B32393 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D17D6A2180359300B32393 /* BooksViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +57,10 @@
 		B8A8E19421754CC90010EFA0 /* SegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentView.swift; sourceTree = "<group>"; };
 		B8A8E197217555280010EFA0 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		B8A8E19A21766CF90010EFA0 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
-		B8B62261217BA84900354B5D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		B8B62261217BA84900354B5D /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		B8B62263217BBB8500354B5D /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		B8B62266217BC92100354B5D /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		B8D17D6A2180359300B32393 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 		B8A8E16421754BB20010EFA0 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				B8B62265217BC90F00354B5D /* ViewModel */,
 				B8B62260217BA82800354B5D /* Model */,
 				B8A8E19621754CF90010EFA0 /* Controller */,
 				B8A8E19321754CB40010EFA0 /* View */,
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				B8A8E16721754BB20010EFA0 /* ViewController.swift */,
+				B8D17D6A2180359300B32393 /* BooksViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -159,9 +165,17 @@
 		B8B62260217BA82800354B5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B8B62261217BA84900354B5D /* Product.swift */,
+				B8B62261217BA84900354B5D /* Book.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B8B62265217BC90F00354B5D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B8B62266217BC92100354B5D /* BookViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,8 +314,10 @@
 				B8A8E19521754CC90010EFA0 /* SegmentView.swift in Sources */,
 				B8A8E198217555280010EFA0 /* TextCell.swift in Sources */,
 				B8A8E16621754BB20010EFA0 /* AppDelegate.swift in Sources */,
+				B8B62267217BC92100354B5D /* BookViewModel.swift in Sources */,
 				B8B62264217BBB8500354B5D /* TableViewDataSource.swift in Sources */,
-				B8B62262217BA84900354B5D /* Product.swift in Sources */,
+				B8B62262217BA84900354B5D /* Book.swift in Sources */,
+				B8D17D6B2180359300B32393 /* BooksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
