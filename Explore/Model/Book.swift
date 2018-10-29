@@ -8,6 +8,27 @@
 
 import Foundation
 
-struct Book {
-  var name:String
+
+struct Model: Decodable {
+    var posts:[Post]
+    var comments:[Comment]
+    var books:[Book]
+}
+
+struct Post:Decodable {
+    var id:Int
+    var title:String
+}
+
+struct Comment: Decodable {
+    var id:Int
+    var body:String
+    var postId:Int
+}
+
+struct Book:Decodable {
+    var id:Int
+    var title:String
+    var image:String
+    var author:String
 }

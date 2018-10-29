@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80A5A8D2183DE5E009357F3 /* GenericTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80A5A8C2183DE5E009357F3 /* GenericTableViewDataSource.swift */; };
 		B8A8E16621754BB20010EFA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A8E16521754BB20010EFA0 /* AppDelegate.swift */; };
 		B8A8E16821754BB20010EFA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A8E16721754BB20010EFA0 /* ViewController.swift */; };
 		B8A8E16B21754BB20010EFA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8A8E16921754BB20010EFA0 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		B8B62267217BC92100354B5D /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B62266217BC92100354B5D /* BookViewModel.swift */; };
 		B8D17D6D21803FAE00B32393 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D17D6C21803FAE00B32393 /* LoadingViewController.swift */; };
 		B8D17D6F2180402500B32393 /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D17D6E2180402500B32393 /* BookListViewController.swift */; };
+		B8D17D722182435100B32393 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D17D712182435100B32393 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B80A5A8C2183DE5E009357F3 /* GenericTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewDataSource.swift; sourceTree = "<group>"; };
 		B8A8E16221754BB20010EFA0 /* Explore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A8E16521754BB20010EFA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8A8E16721754BB20010EFA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		B8B62266217BC92100354B5D /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		B8D17D6C21803FAE00B32393 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		B8D17D6E2180402500B32393 /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
+		B8D17D712182435100B32393 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B80A5A8B2183DDCC009357F3 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				B80A5A8C2183DE5E009357F3 /* GenericTableViewDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		B8A8E15921754BB20010EFA0 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +125,8 @@
 		B8A8E16421754BB20010EFA0 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				B80A5A8B2183DDCC009357F3 /* DataSource */,
+				B8D17D702182430F00B32393 /* Service */,
 				B8B62265217BC90F00354B5D /* ViewModel */,
 				B8B62260217BA82800354B5D /* Model */,
 				B8A8E19621754CF90010EFA0 /* Controller */,
@@ -179,6 +193,14 @@
 				B8B62266217BC92100354B5D /* BookViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B8D17D702182430F00B32393 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B8D17D712182435100B32393 /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,10 +338,12 @@
 				B8A8E16821754BB20010EFA0 /* ViewController.swift in Sources */,
 				B8A8E19521754CC90010EFA0 /* SegmentView.swift in Sources */,
 				B8A8E198217555280010EFA0 /* TextCell.swift in Sources */,
+				B80A5A8D2183DE5E009357F3 /* GenericTableViewDataSource.swift in Sources */,
 				B8A8E16621754BB20010EFA0 /* AppDelegate.swift in Sources */,
 				B8D17D6D21803FAE00B32393 /* LoadingViewController.swift in Sources */,
 				B8B62267217BC92100354B5D /* BookViewModel.swift in Sources */,
 				B8B62264217BBB8500354B5D /* TableViewDataSource.swift in Sources */,
+				B8D17D722182435100B32393 /* Service.swift in Sources */,
 				B8B62262217BA84900354B5D /* Book.swift in Sources */,
 				B8D17D6F2180402500B32393 /* BookListViewController.swift in Sources */,
 			);

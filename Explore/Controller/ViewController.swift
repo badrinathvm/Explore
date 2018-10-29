@@ -10,8 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
 
-    private var dataSource:TableViewDataSource<Book>?
+    private var dataSource:GenericTableviewDataSource<BookViewModel>?
     private var viewModel: BookViewModel?
+    
+    var bookListViewModel:BookListViewModel?
     
     lazy var listviewController:BookListViewController = {
         let viewController = BookListViewController()
@@ -52,6 +54,9 @@ class ViewController: UIViewController, UITableViewDelegate {
         ])
     }
     
+    
+
+    
     var books: [Book] = []
     
     override func viewDidLoad() {
@@ -78,15 +83,17 @@ class ViewController: UIViewController, UITableViewDelegate {
            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        books.append( Book(name: "Button1"))
-        books.append( Book(name: "Button3"))
-        
         tableView.tableFooterView = UIView()
         
-        self.dataSource = .make(for: books)
-
-        self.tableView.dataSource = self.dataSource
-        self.tableView.reloadData()
+        bookListViewModel = BookListViewModel(completion: {
+            
+            guard let bookViewModel = self.bookListViewModel?.bookViewModels else { return }
+            
+            //self.dataSource = .make(for: bookViewModel)
+            self.dataSource = GenericTableviewDataSource.make(for: bookViewModel, reuseIdentifier: self.cellId)
+            self.tableView.dataSource = self.dataSource
+            self.tableView.reloadData()
+        })
     }
 }
 
@@ -101,11 +108,11 @@ extension ViewController: ContainerViewDelegate {
 }
 
 //Creating a new reusable tableview data source
-extension TableViewDataSource where Model == Book {
+extension TableViewDataSource where Model == BookViewModel {
 
-    static func make(for products:  [Book] , reuseIdentifier: String = "bookCell" ) -> TableViewDataSource{
+    static func make(for books:  [Model] , reuseIdentifier: String = "bookCell" ) -> TableViewDataSource{
 
-        let dataSource = TableViewDataSource(models: products, reuseIdentifier: reuseIdentifier ) { (book, cell) in
+        let dataSource = TableViewDataSource(models: books, reuseIdentifier: reuseIdentifier ) { (book, cell) in
             cell.textLabel?.text = book.name
         }
 
@@ -130,5 +137,30 @@ extension UIViewController {
         removeFromParent()
         view.removeFromSuperview()
     }
+}
+
+extension GenericTableviewDataSource where Model == BookViewModel {
+    
+    static func make(for books: [Model], reuseIdentifier: String ) -> GenericTableviewDataSource {
+        let dataSource = GenericTableviewDataSource(models: books, reuseIdentifier: reuseIdentifier) { (model, cell) in
+            //cell.textLabel?.text = model.name
+            
+            let cellConfig = TableCellConfigurator<BookViewModel>(titleKeyPath: \.name)
+            cellConfig.configure(cell: cell, for: model)
+        }
+        
+        return dataSource
+    }
+}
+
+
+struct TableCellConfigurator<Model> {
+    
+    let titleKeyPath:KeyPath<Model, String>
+    
+    func configure(cell: UITableViewCell, for model: Model) {
+        cell.textLabel?.text = model[keyPath: titleKeyPath]
+    }
+    
 }
 
